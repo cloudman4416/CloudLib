@@ -27,26 +27,50 @@ function randomstring(len)
 	end
 	return string
 end
+
+function NewFrame()
+	local frame = Instance.new("Frame")
+	frame.AnchorPoint = Vector2.new(0.5, 0.5)
+	frame.BackGroundColor = Color3.fromRGB(255, 255, 255)
+	return frame
+end
+
+function NewScrollFrame()
+	local scroll = Instance.new("ScrollingFrame")
+	scroll.AnchorPoint = Vector2.new(0.5, 0.5)
+	scroll.BackGroundColor = Color3.fromRGB(255, 255, 255)
+	return scroll
+end
+
 local CloudLib = {
-	["toggles"] = {}
-	["Elements"] = {}
+	["toggles"] = {},
+	["Elements"] = {
+		["Tabs"] = {}
+	}
 }
 function CloudLib:MakeWindow(settings)
 	local gui = Instance.new("ScreenGui")
-  	local Window = Instance.new("Frame")
-	Window.Parent = gui
+  	local window = NewFrame()
 	-- ui round border
   	gui.Name = randomstring(10)
 	gui.Parent = gethui() or game.CoreGui
-	Window.AnchorPoint = Vector2.new(0.5, 0.5)
-	Window.Size = settings["Size"]
-	local topbar = Instance.new("Frame")
-	local nametxt = Instance.new("TextLabel")
-	nametxt.Text = settings["Name")
-	nametxt.AutoSize = true
+	window.AnchorPoint = Vector2.new(0.5, 0.5)
+	window.Size = settings["Size"]
+	Window.Position = Vector2.new(
+	window.Parent = gui
+	local topbar = NewFrame()
+	local txtLabel = Instance.new("TextLabel")
+	txtLabel.Text = settings["Name"]
+	txtLabel.AutoSize = true
+	local scrollFrame = NewScrollFrame()
 	CloudLib["Elements"]["Window"] = Window
-	
 end
 
+function CloudLib:MakeTab(settings)
+	local tab = NewFrame()
+	tab
+	CloudLib["Elements"]["Tabs"][settings["Name"]] = tab
+	
+end
 
 return CloudLib
