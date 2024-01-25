@@ -1,3 +1,10 @@
+for __, gui in pairs(game.CoreGui:GetChildren())
+	if gui:GetAttribute("Cloud") then
+		gui:Destroy()
+		print("deleted old ui")
+	end
+end
+
 local char = {
 	[1] = "a",
 	[2] = "b",
@@ -35,6 +42,13 @@ function NewFrame()
 	return frame
 end
 
+function NewTLabel(text)
+	local textLabel = Instance.new("TextLabel")
+	textLabel.AutoSize = true
+	textLabel.Text = text
+	return textLabel
+end
+
 function NewScrollFrame()
 	local scroll = Instance.new("ScrollingFrame")
 	scroll.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -50,6 +64,7 @@ local CloudLib = {
 }
 function CloudLib:MakeWindow(settings)
 	local gui = Instance.new("ScreenGui")
+	gui:SetAttribute("Cloud", true)
   	local window = NewFrame()
 	-- ui round border
   	gui.Name = randomstring(10)
@@ -68,9 +83,10 @@ end
 
 function CloudLib:MakeTab(settings)
 	local tab = NewFrame()
+	local tabName = settings["Name"]
+	local txtLab = NewTLabel(tabName)
 	tab
-	CloudLib["Elements"]["Tabs"][settings["Name"]] = tab
-	
+	CloudLib["Elements"]["Tabs"][tabName] = tab
 end
 
 return CloudLib
