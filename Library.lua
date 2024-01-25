@@ -57,7 +57,12 @@ function NewScrollFrame()
 end
 
 local CloudLib = {
-	["toggles"] = {},
+	["Toggles"] = {
+		["ExampleName"] = {
+			["State"] = false,
+			["CallBack"] function() print("babouche") end
+		}
+	},
 	["Elements"] = {
 		["Tabs"] = {}
 	}
@@ -85,7 +90,7 @@ function CloudLib:MakeTab(settings)
 	local tab = NewFrame()
 	local tabName = settings["Name"]
 	local txtLab = NewTLabel(tabName)
-	tab
+	txtLabel.Parent = tab
 	CloudLib["Elements"]["Tabs"][tabName] = tab
 end
 
