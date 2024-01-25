@@ -27,13 +27,26 @@ function randomstring(len)
 	end
 	return string
 end
-local CloudLib = {}
+local CloudLib = {
+	["toggles"] = {}
+	["Elements"] = {}
+}
 function CloudLib:MakeWindow(settings)
-  local gui = Instance.new("ScreenGui")
-  local Window = Instance.new("Frame")
+	local gui = Instance.new("ScreenGui")
+  	local Window = Instance.new("Frame")
 	Window.Parent = gui
 	-- ui round border
-  gui.Name = randomstring(10)
+  	gui.Name = randomstring(10)
 	gui.Parent = gethui() or game.CoreGui
+	Window.AnchorPoint = Vector2.new(0.5, 0.5)
+	Window.Size = settings["Size"]
+	local topbar = Instance.new("Frame")
+	local nametxt = Instance.new("TextLabel")
+	nametxt.Text = settings["Name")
+	nametxt.AutoSize = true
+	CloudLib["Elements"]["Window"] = Window
+	
 end
+
+
 return CloudLib
